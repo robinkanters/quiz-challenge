@@ -1,0 +1,10 @@
+language: csharp
+solution: sln/QuizChallenge.sln
+mono:
+    - latest
+before_install:
+    - git submodule update --init --recursive
+install:
+    - nuget restore sln/QuizChallenge.sln
+script:
+    - xbuild /p:Configuration=Release sln/QuizChallenge.sln
