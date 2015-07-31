@@ -78,7 +78,7 @@
             do
             {
                 Console.Write("Hello, what is your name? ");
-                name = Console.ReadLine();
+                name = Console.ReadLine()?.Trim();
             } while (string.Empty.Equals(name));
 
             return name;
