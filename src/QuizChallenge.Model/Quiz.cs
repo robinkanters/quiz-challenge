@@ -6,7 +6,7 @@
 
     public class Quiz : IQuiz
     {
-        public Quiz(string name, params IQuestion[] questions)
+        internal Quiz(string name, params IQuestion[] questions)
         {
             Name = name;
             AddAll(questions);

@@ -6,7 +6,7 @@
 
     public class Question : IQuestion
     {
-        public Question(string question, params IChoice[] choices)
+        internal Question(string question, params IChoice[] choices)
         {
             QuestionString = question;
             AddAll(choices);

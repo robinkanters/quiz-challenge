@@ -4,7 +4,7 @@
 
     public class Choice : IChoice
     {
-        public Choice(string choiceText, int value)
+        internal Choice(string choiceText, int value)
         {
             ChoiceText = choiceText;
             Value = value;

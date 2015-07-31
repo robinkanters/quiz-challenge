@@ -4,7 +4,7 @@
 
     public class Answer : IAnswer
     {
-        public Answer(IQuestion question, IChoice choice)
+        internal Answer(IQuestion question, IChoice choice)
         {
             Question = question;
             Choice = choice;

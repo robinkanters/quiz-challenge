@@ -37,23 +37,38 @@
 
         private static void FillQuizzes(QuizRepository quizzes)
         {
-            quizzes.AddRange(new IQuiz[]
-            {
-                new Quiz
-                (
-                    "Test quiz",
-                    new Question("Some question 1?", new Choice("Meh 1", 0), new Choice("Kinda 1", 5), new Choice("Yes 1!", 10)),
-                    new Question("Some question 2?", new Choice("Meh 2", 0), new Choice("Kinda 2", 5), new Choice("Yes 2!", 10)),
-                    new Question("Some question 3?", new Choice("Meh 3", 0), new Choice("Kinda 3", 5), new Choice("Yes 3!", 10))
-                ),
-                new Quiz
-                (
-                    "Test quiz 2",
-                    new Question("Some question 1?", new Choice("Meh 1", 0), new Choice("Kinda 1", 5), new Choice("Yes 1!", 10)),
-                    new Question("Some question 2?", new Choice("Meh 2", 0), new Choice("Kinda 2", 5), new Choice("Yes 2!", 10)),
-                    new Question("Some question 3?", new Choice("Meh 3", 0), new Choice("Kinda 3", 5), new Choice("Yes 3!", 10))
-                )
-            });
+            quizzes.CreateQuiz
+            (
+                "Test quiz",
+                QuestionFactory.Create("Some question 1?",
+                    ChoiceFactory.Create("Meh 1", 0),
+                    ChoiceFactory.Create("Kinda 1", 5),
+                    ChoiceFactory.Create("Yes 1!", 10)),
+                QuestionFactory.Create("Some question 2?",
+                    ChoiceFactory.Create("Meh 2", 0),
+                    ChoiceFactory.Create("Kinda 2", 5),
+                    ChoiceFactory.Create("Yes 2!", 10)),
+                QuestionFactory.Create("Some question 3?",
+                    ChoiceFactory.Create("Meh 3", 0),
+                    ChoiceFactory.Create("Kinda 3", 5),
+                    ChoiceFactory.Create("Yes 3!", 10))
+            );
+            quizzes.CreateQuiz
+            (
+                "Test quiz 2",
+                QuestionFactory.Create("Some question 1?",
+                    ChoiceFactory.Create("Meh 1", 0),
+                    ChoiceFactory.Create("Kinda 1", 5),
+                    ChoiceFactory.Create("Yes 1!", 10)),
+                QuestionFactory.Create("Some question 2?",
+                    ChoiceFactory.Create("Meh 2", 0),
+                    ChoiceFactory.Create("Kinda 2", 5),
+                    ChoiceFactory.Create("Yes 2!", 10)),
+                QuestionFactory.Create("Some question 3?",
+                    ChoiceFactory.Create("Meh 3", 0),
+                    ChoiceFactory.Create("Kinda 3", 5),
+                    ChoiceFactory.Create("Yes 3!", 10))
+            );
         }
 
         private static string AskName()
