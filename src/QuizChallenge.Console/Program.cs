@@ -29,7 +29,7 @@
 
             var chosenQuiz = GetQuizChoice(quizzes);
 
-            (new QuizMaster(chosenQuiz)).Play();
+            QuizMasterFactory.Create(chosenQuiz).Play();
 
             Console.WriteLine("\nThanks for playing! Press enter to exit.");
             Console.ReadLine();

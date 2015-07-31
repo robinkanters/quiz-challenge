@@ -1,4 +1,4 @@
-﻿namespace QuizChallenge.Console
+﻿namespace QuizChallenge.Model
 {
     using System.Linq;
     using ModelInterfaces;
@@ -7,7 +7,7 @@
     {
         public IQuiz Quiz { get; }
 
-        public QuizMaster(IQuiz quiz)
+        internal QuizMaster(IQuiz quiz)
         {
             Quiz = quiz;
         }
