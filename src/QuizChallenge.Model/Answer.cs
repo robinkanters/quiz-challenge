@@ -6,8 +6,8 @@
     {
         internal Answer(IQuestion question, IChoice choice)
         {
-            Question = question;
-            Choice = choice;
+            this.Question = question;
+            this.Choice = choice;
         }
 
         public IQuestion Question { get; }
