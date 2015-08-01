@@ -2,7 +2,6 @@
 {
     public interface IGameCommandListener
     {
-        void Write(string message);
-        void Write(string message, params object[] parameters);
+        void ReadQuestion(IQuestion question);
     }
 }
