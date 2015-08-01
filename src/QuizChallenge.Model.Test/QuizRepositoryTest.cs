@@ -1,23 +1,21 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QuizChallenge.ModelInterfaces;
-
-namespace QuizChallenge.Model.Test
+﻿namespace QuizChallenge.Model.Test
 {
-    [TestClass]
+    using NUnit.Framework;
+    
     public class QuizRepositoryTest
     {
-        [TestMethod]
+        [Test]
         public void QuizRepository_CreateQuiz_Succeeds()
         {
             const string quizName = "Quiz name";
 
             var repo = QuizRepository.Instance;
             var quiz = repo.CreateQuiz(quizName);
-
-            Assert.AreEqual(quiz.Name, quizName);
+            
+            Assert.That(quiz.Name.Equals(quizName));
         }
 
-        [TestMethod]
+        [Test]
         public void QuizRepository_CreateWithChoices_HasChoices()
         {
             const string quizName = "Quiz name";
@@ -34,16 +32,16 @@ namespace QuizChallenge.Model.Test
 
             var repo = QuizRepository.Instance;
             var quiz = repo.CreateQuiz(quizName, question1, question2);
-
-            Assert.AreEqual(quiz.Questions.Count, 2);
-            Assert.AreEqual(quiz.Questions[0].QuestionString, "Some question");
-            Assert.AreEqual(quiz.Questions[0].Choices.Count, 3);
-            Assert.AreEqual(quiz.Questions[0].Choices[1].ChoiceText, "Some other choice");
-            Assert.AreEqual(quiz.Questions[0].Choices[2].Value, 20);
-            Assert.AreEqual(quiz.Questions[1].QuestionString, "Some other question");
-            Assert.AreEqual(quiz.Questions[1].Choices.Count, 2);
-            Assert.AreEqual(quiz.Questions[1].Choices[0].ChoiceText, "Some choice");
-            Assert.AreEqual(quiz.Questions[1].Choices[1].Value, 0);
+            
+            Assert.That(quiz.Questions.Count.Equals(2));
+            Assert.That(quiz.Questions[0].QuestionString.Equals("Some question"));
+            Assert.That(quiz.Questions[0].Choices.Count.Equals(3));
+            Assert.That(quiz.Questions[0].Choices[1].ChoiceText.Equals("Some other choice"));
+            Assert.That(quiz.Questions[0].Choices[2].Value.Equals(20));
+            Assert.That(quiz.Questions[1].QuestionString.Equals("Some other question"));
+            Assert.That(quiz.Questions[1].Choices.Count.Equals(2));
+            Assert.That(quiz.Questions[1].Choices[0].ChoiceText.Equals("Some choice"));
+            Assert.That(quiz.Questions[1].Choices[1].Value.Equals(0));
         }
     }
 }
