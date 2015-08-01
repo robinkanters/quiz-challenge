@@ -24,11 +24,7 @@ namespace QuizChallenge.Model
             {
                 _gameCommandListener.ReadQuestion(q);
 
-                var j = 0;
-                q.Choices.ForEach(c =>
-                {
-                    System.Console.WriteLine("{0}. {1}", (char)('a'+j++), c.ChoiceText);
-                });
+                _gameCommandListener.ListChoices(q.Choices);
 
                 System.Console.Write("\nAnswer: ");
 

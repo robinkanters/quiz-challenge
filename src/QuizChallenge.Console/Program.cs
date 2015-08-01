@@ -1,4 +1,6 @@
-﻿namespace QuizChallenge.Console
+﻿using System.Collections.Generic;
+
+namespace QuizChallenge.Console
 {
     using System;
     using System.Linq;
@@ -125,6 +127,15 @@
             Console.Clear();
             Console.WriteLine("Question {0}:\n{1}", 0, question.QuestionString);
             Console.WriteLine();
+        }
+
+        public void ListChoices(List<IChoice> choices)
+        {
+            var j = 0;
+            choices.ForEach(c =>
+            {
+                Console.WriteLine("{0}. {1}", (char)('a' + j++), c.ChoiceText);
+            });
         }
 
         private static void Main(string[] args)
