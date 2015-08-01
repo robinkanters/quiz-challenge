@@ -1,10 +1,12 @@
 language: csharp
 solution: sln/QuizChallenge.sln
 mono:
-    - latest
+  - latest
 before_install:
-    - git submodule update --init --recursive
+  - git submodule update --init --recursive
 install:
-    - nuget restore sln/QuizChallenge.sln
+  - nuget restore sln/QuizChallenge.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
-    - xbuild /p:Configuration=Release sln/QuizChallenge.sln
+  - xbuild /p:Configuration=Release sln/QuizChallenge.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./src/QuizChallenge.Test/bin/Release/QuizChallenge.Test.dll
