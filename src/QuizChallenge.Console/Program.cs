@@ -5,7 +5,7 @@
     using Model;
     using ModelInterfaces;
 
-    class Program
+    class Program : IGameCommandListener
     {
         static void Main(string[] args)
         {
@@ -119,6 +119,13 @@
             } while (null == result);
 
             return result;
+        }
+
+        public void ReadQuestion(IQuestion question)
+        {
+            Console.Clear();
+            Console.WriteLine("Question {0}:\n{1}", 0, question.QuestionString);
+            Console.WriteLine();
         }
     }
 }
