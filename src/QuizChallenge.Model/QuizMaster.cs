@@ -1,16 +1,20 @@
-﻿namespace QuizChallenge.Model
+﻿// ReSharper disable ConvertToAutoProperty
+// ReSharper disable ConvertPropertyToExpressionBody
+namespace QuizChallenge.Model
 {
     using System.Linq;
     using ModelInterfaces;
 
     public class QuizMaster
     {
-        public IQuiz Quiz { get; }
+        private readonly IQuiz _quiz;
 
         internal QuizMaster(IQuiz quiz)
         {
-            Quiz = quiz;
+            _quiz = quiz;
         }
+
+        public IQuiz Quiz { get { return _quiz; } }
 
         public void Play()
         {
