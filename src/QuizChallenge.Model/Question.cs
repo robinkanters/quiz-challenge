@@ -19,5 +19,9 @@
 
         public string QuestionString { get; }
         public List<IChoice> Choices { get; } = new List<IChoice>();
+        public IAnswer CreateAnswer(IChoice choice)
+        {
+            return new Answer(this, choice);
+        }
     }
 }
