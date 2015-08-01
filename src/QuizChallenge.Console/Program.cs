@@ -129,13 +129,29 @@ namespace QuizChallenge.Console
             Console.WriteLine();
         }
 
-        public void ListChoices(List<IChoice> choices)
+        public IAnswer AskAnswer(IQuestion question)
         {
             var j = 0;
-            choices.ForEach(c =>
+
+            var choices = new Dictionary<char,IChoice>();
+            question.Choices.ForEach(c => choices.Add((char)('a' + j++), c));
+
+            char answerChar;
+
+            do
             {
-                Console.WriteLine("{0}. {1}", (char)('a' + j++), c.ChoiceText);
-            });
+                Console.Clear();
+
+                foreach (var choice in choices)
+                {
+                    Console.WriteLine("{0}. {1}", choice.Key, choice.Value.ChoiceText);
+                }
+
+                Console.Write("\nAnswer: ");
+                answerChar = Console.ReadKey().KeyChar;
+            } while (!choices.ContainsKey(answerChar));
+
+            return question.CreateAnswer(choices[answerChar]);
         }
 
         private static void Main(string[] args)

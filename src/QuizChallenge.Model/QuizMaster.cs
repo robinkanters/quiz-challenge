@@ -24,11 +24,7 @@ namespace QuizChallenge.Model
             {
                 _gameCommandListener.ReadQuestion(q);
 
-                _gameCommandListener.ListChoices(q.Choices);
-
-                System.Console.Write("\nAnswer: ");
-
-                System.Console.ReadLine();
+                var answer = _gameCommandListener.AskAnswer(q);
             });
         }
     }
