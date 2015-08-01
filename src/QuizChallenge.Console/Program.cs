@@ -7,8 +7,7 @@
 
     class Program : IGameCommandListener
     {
-        static void Main(string[] args)
-        {
+        internal Program() { 
             var name = AskName();
 
             Console.WriteLine("\nHello, {0}, these are the available quizzes:", name);
@@ -29,7 +28,7 @@
 
             var chosenQuiz = GetQuizChoice(quizzes);
 
-            QuizMasterFactory.Create(chosenQuiz).Play();
+            QuizMasterFactory.Create(chosenQuiz, this).Play();
 
             Console.WriteLine("\nThanks for playing! Press enter to exit.");
             Console.ReadLine();
@@ -126,6 +125,11 @@
             Console.Clear();
             Console.WriteLine("Question {0}:\n{1}", 0, question.QuestionString);
             Console.WriteLine();
+        }
+
+        private static void Main(string[] args)
+        {
+            new Program();
         }
     }
 }

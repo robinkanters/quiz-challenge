@@ -4,9 +4,9 @@
 
     public class QuizMasterFactory
     {
-        public static QuizMaster Create(IQuiz chosenQuiz)
+        public static QuizMaster Create(IQuiz chosenQuiz, IGameCommandListener gameCommandListener)
         {
-            return new QuizMaster(chosenQuiz);
+            return new QuizMaster(chosenQuiz, gameCommandListener);
         }
     }
 }

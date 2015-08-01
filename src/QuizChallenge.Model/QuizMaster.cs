@@ -8,22 +8,21 @@ namespace QuizChallenge.Model
     public class QuizMaster
     {
         private readonly IQuiz _quiz;
+        private readonly IGameCommandListener _gameCommandListener;
 
-        internal QuizMaster(IQuiz quiz)
+        internal QuizMaster(IQuiz quiz, IGameCommandListener listener)
         {
             _quiz = quiz;
+            _gameCommandListener = listener;
         }
 
         public IQuiz Quiz { get { return _quiz; } }
 
         public void Play()
         {
-            var i = 1;
             Quiz.Questions.ToList().ForEach(q =>
             {
-                System.Console.Clear();
-                System.Console.WriteLine("Question {0}:\n{1}", i++, q.QuestionString);
-                System.Console.WriteLine();
+                _gameCommandListener.ReadQuestion(q);
 
                 var j = 0;
                 q.Choices.ToList().ForEach(c =>
