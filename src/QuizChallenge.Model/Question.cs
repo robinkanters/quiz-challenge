@@ -18,6 +18,6 @@
         }
 
         public string QuestionString { get; }
-        public IList<IChoice> Choices { get; } = new List<IChoice>();
+        public List<IChoice> Choices { get; } = new List<IChoice>();
     }
 }

@@ -5,6 +5,6 @@
     public interface IQuestion
     {
         string QuestionString { get; }
-        IList<IChoice> Choices { get; } 
+        List<IChoice> Choices { get; } 
     }
 }
