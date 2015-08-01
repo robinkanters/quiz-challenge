@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IAnswer.cs" />
     <Compile Include="IChoice.cs" />
+    <Compile Include="IGameCommandListener.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="IQuestion.cs" />
     <Compile Include="IQuiz.cs" />
