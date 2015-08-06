@@ -136,7 +136,7 @@ namespace QuizChallenge.Console
             var choices = new Dictionary<char,IChoice>();
             question.Choices.ForEach(c => choices.Add((char)('a' + j++), c));
 
-            char answerChar;
+            var answerChar = '\0';
 
             do
             {
@@ -148,7 +148,10 @@ namespace QuizChallenge.Console
                 }
 
                 Console.Write("\nAnswer: ");
-                answerChar = Console.ReadKey().KeyChar;
+                var readLine = Console.ReadLine();
+                if (readLine == null) continue;
+
+                answerChar = readLine[0];
             } while (!choices.ContainsKey(answerChar));
 
             return question.CreateAnswer(choices[answerChar]);
