@@ -151,8 +151,8 @@ namespace QuizChallenge.Console
                 Console.Write("\nAnswer: ");
                 var readLine = Console.ReadLine();
                 if (readLine == null) continue;
-
-                if ("back".Equals(readLine, StringComparison.InvariantCultureIgnoreCase))
+                
+                if (new[] { "back", "b", "oops", "p", "prev" }.Contains(readLine.ToLower()))
                 {
                     return question.CreateAnswer(Choice.PREVIOUS_ANSWER);
                 }
