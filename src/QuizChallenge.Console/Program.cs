@@ -152,6 +152,11 @@ namespace QuizChallenge.Console
                 var readLine = Console.ReadLine();
                 if (readLine == null) continue;
 
+                if ("back".Equals(readLine, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return question.CreateAnswer(Choice.PREVIOUS_ANSWER);
+                }
+
                 answerChar = readLine[0];
             } while (!choices.ContainsKey(answerChar));
 

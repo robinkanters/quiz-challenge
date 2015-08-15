@@ -12,5 +12,7 @@
 
         public string ChoiceText { get; }
         public int Value { get; }
+
+        public static readonly IChoice PREVIOUS_ANSWER = new Choice("", -1);
     }
 }

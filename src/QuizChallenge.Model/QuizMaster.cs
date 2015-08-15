@@ -20,12 +20,29 @@ namespace QuizChallenge.Model
 
         public void Play()
         {
-            Quiz.Questions.ToList().ForEach(q =>
+            var game = GameFactory.Create(Quiz);
+
+            for (var i = 0; i < Quiz.Questions.Count; i++)
             {
+                var q = Quiz.Questions[i];
+
                 _gameCommandListener.ReadQuestion(q);
 
                 var answer = _gameCommandListener.AskAnswer(q);
-            });
+
+                if (answer.Choice.Equals(Choice.PREVIOUS_ANSWER))
+                {
+                    i -= 2;
+                    continue;
+                }
+
+                game.Answers.Remove(q);
+                game.Answers.Add(q, answer);
+            }
+
+            game.Answers.ToList().ForEach(a => game.AwardPoints(a.Value.Choice.Value));
+
+            _gameCommandListener.ReadScore(game.Score);
         }
     }
 }
