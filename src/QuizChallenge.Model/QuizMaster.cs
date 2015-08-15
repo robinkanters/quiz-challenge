@@ -32,7 +32,8 @@ namespace QuizChallenge.Model
 
                 if (answer.Choice.Equals(Choice.PREVIOUS_ANSWER))
                 {
-                    i -= 2;
+                    if (i >= 2)
+                        i -= 2;
                     continue;
                 }
 
