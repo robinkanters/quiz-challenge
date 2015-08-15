@@ -141,6 +141,7 @@ namespace QuizChallenge.Console
             do
             {
                 Console.Clear();
+                Console.WriteLine("Question: {0}", question.QuestionString);
 
                 foreach (var choice in choices)
                 {
