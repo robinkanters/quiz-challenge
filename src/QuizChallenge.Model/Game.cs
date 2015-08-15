@@ -14,7 +14,8 @@
             Score = 0;
         }
 
-        IQuiz IGame.Quiz => _quiz;
+        // ReSharper disable once ConvertToAutoProperty
+        public IQuiz Quiz => _quiz;
 
         public int Score { get; private set; }
         public Dictionary<IQuestion, IAnswer> Answers { get; } = new Dictionary<IQuestion, IAnswer>();
