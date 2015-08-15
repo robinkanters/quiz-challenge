@@ -6,5 +6,6 @@ namespace QuizChallenge.ModelInterfaces
     {
         void ReadQuestion(IQuestion question);
         IAnswer AskAnswer(IQuestion question);
+        void ReadScore(int score);
     }
 }

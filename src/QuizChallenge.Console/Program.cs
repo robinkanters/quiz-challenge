@@ -158,6 +158,13 @@ namespace QuizChallenge.Console
             return question.CreateAnswer(choices[answerChar]);
         }
 
+        public void ReadScore(int score)
+        {
+            Console.Clear();
+            Console.WriteLine("The quiz is over!");
+            Console.WriteLine("Congratulations, you scored {0} points!", score);
+        }
+
         private static void Main(string[] args)
         {
             new Program();
