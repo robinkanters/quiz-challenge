@@ -6,13 +6,16 @@
 
     public class Game : IGame
     {
+        private readonly IQuiz _quiz;
+
         internal Game(IQuiz quiz)
         {
-            Quiz = quiz;
+            _quiz = quiz;
             Score = 0;
         }
 
-        public IQuiz Quiz { get; }
+        IQuiz IGame.Quiz => _quiz;
+
         public int Score { get; private set; }
         public Dictionary<IQuestion, IAnswer> Answers { get; } = new Dictionary<IQuestion, IAnswer>();
 
