@@ -12,6 +12,7 @@
             var game = GameFactory.Create(quiz);
 
             Assert.That(game, Is.Not.Null);
+            Assert.That(game.Quiz, Is.EqualTo(quiz));
         }
 
         [Test]
