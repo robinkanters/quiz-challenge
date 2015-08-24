@@ -20,7 +20,7 @@ install:
   - cd ../../robinkanters/quiz-challenge
 script:
   - xbuild /p:Configuration=Release sln/QuizChallenge.sln
-  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+QuizChallenge ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./src/QuizChallenge.Model.Test/bin/Release/QuizChallenge.Model.Test.dll
+  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+QuizChallenge ./src/packages/NUnit.Console.3.0.0-beta-3/tools/nunit-console.exe --process=Single ./src/QuizChallenge.Model.Test/bin/Release/QuizChallenge.Model.Test.dll
   - export LD_LIBRARY_PATH=/usr/local/lib
   - monocov --export-xml=monocovCoverage monocovCoverage.cov
   - cat monocovCoverage.cov
