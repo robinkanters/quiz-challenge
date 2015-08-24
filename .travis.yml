@@ -1,10 +1,7 @@
 language: csharp
-# sudo: true
-solution: sln/QuizChallenge.sln
-before_install:
-  - git submodule update --init --recursive
+solution: ./sln/QuizChallenge.sln
 install:
-  - nuget restore sln/QuizChallenge.sln
+  - nuget restore ./sln/QuizChallenge.sln
   - sudo apt-get install gtk-sharp2
   - curl -sS https://api.nuget.org/packages/mono.cecil.0.9.5.4.nupkg > /tmp/mono.cecil.0.9.5.4.nupkg.zip
   - unzip /tmp/mono.cecil.0.9.5.4.nupkg.zip -d /tmp/cecil
@@ -18,8 +15,19 @@ install:
   - sudo make install
   - cd ../../robinkanters/quiz-challenge
 script:
-  - xbuild /p:Configuration=Release sln/QuizChallenge.sln
-  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+QuizChallenge ./src/packages/NUnit.Console.3.0.0-beta-3/tools/nunit-console.exe --process=Single ./src/QuizChallenge.Model.Test/bin/Release/QuizChallenge.Model.Test.dll
+  - xbuild /p:Configuration=Release ./sln/QuizChallenge.sln
   - export LD_LIBRARY_PATH=/usr/local/lib
+  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+QuizChallenge ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe --process=Single ./src/QuizChallenge.Model.Test/bin/Release/QuizChallenge.Model.Test.dll
   - monocov --export-xml=monocovCoverage monocovCoverage.cov
   - cat monocovCoverage.cov
+  - ls monocovCoverage
+  - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
+  - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
+  - REPO_COMMIT_MESSAGE=$(git show -s --pretty=format:"%s")
+  - echo $TRAVIS_COMMIT
+  - echo $TRAVIS_BRANCH
+  - echo $REPO_COMMIT_AUTHOR
+  - echo $REPO_COMMIT_AUTHOR_EMAIL
+  - echo $REPO_COMMIT_MESSAGE
+  - echo $TRAVIS_JOB_ID
+  - mono ./src/packages/coveralls.net.0.6.0/tools/csmacnz.Coveralls.exe --monocov -i ./monocovCoverage --repoToken $COVERALLS_REPO_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID  --serviceName travis-ci  --useRelativePaths
