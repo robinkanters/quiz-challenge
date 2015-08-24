@@ -1,5 +1,5 @@
 language: csharp
-sudo: true
+# sudo: true
 solution: sln/QuizChallenge.sln
 before_install:
   - git submodule update --init --recursive
