@@ -8,7 +8,7 @@
         [Test]
         [TestCase(-1)]
         [ExpectedException(typeof(InvalidDataException))]
-        public void Create_WithInvalidChoiceValue_ThrowsException(int testValue)
+        public void Create_WithChoiceValueBelowZero_ThrowsException(int testValue)
         {
             const string choiceText = "text doesn't matter for test";
 
@@ -20,7 +20,7 @@
         [Test]
         [TestCase(0)]
         [TestCase(1)]
-        public void Create_WithValidChoiceValue_CreatesChoiceObject(int testValue)
+        public void Create_WithChoiceValueEqualToOrGreaterThanZero_CreatesChoiceObject(int testValue)
         {
             const string choiceText = "text doesn't matter for test";
 
