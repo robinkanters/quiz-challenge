@@ -29,5 +29,26 @@
             Assert.That(choice, Is.Not.Null);
             Assert.That(choice.Value, Is.EqualTo(testValue));
         }
+
+        [Test]
+        [TestCase("")]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void Create_WithEmptyChoiceText_ThrowsException(string choiceText)
+        {
+            var choice = ChoiceFactory.Create(choiceText, 0);
+
+            Assert.That(choice, Is.Null);
+        }
+
+        [Test]
+        [TestCase("1")]
+        [TestCase("22")]
+        public void Create_WithNonZeroLengthChoiceText_CreatesChoiceObject(string choiceText)
+        {
+            var choice = ChoiceFactory.Create(choiceText, 0);
+
+            Assert.That(choice, Is.Not.Null);
+            Assert.That(choice.ChoiceText, Is.EqualTo(choiceText));
+        }
     }
 }
