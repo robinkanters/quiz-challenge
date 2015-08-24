@@ -58,6 +58,7 @@
     <Compile Include="ChoiceFactoryTest.cs" />
     <Compile Include="ChoiceTest.cs" />
     <Compile Include="GameFactoryTest.cs" />
+    <Compile Include="GameTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuizRepositoryTest.cs" />
   </ItemGroup>
